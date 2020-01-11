@@ -2,21 +2,23 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
 
-        int nIterations = 10;
-        String filename = "../../../Files/artusi_32mb.txt";
+        int nIterations = 5;
 
-        // Compute bigrams
-        execute(2, nIterations, filename);
+        List<String> sizes = Arrays.asList("50kb", "100kb", "200kb", "500kb", "1mb", "2mb", "4mb", "8mb", "16mb", "32mb");
+        sizes.forEach(size -> {
 
-        TimeUnit.SECONDS.sleep(2);
+            String filename = "../../../Files/artusi_" + size + ".txt";
 
-        // Compute trigrams
-        execute(3, nIterations, filename);
+            // Compute bigrams
+            execute(2, nIterations, filename);
+
+            // Compute trigrams
+            execute(3, nIterations, filename);
+        });
     }
 
     public static void execute(int n, int nIterations, String filename) {

@@ -95,15 +95,17 @@ void execute(int n, int nIterations, int threads, const string& filename) {
 int main(int argc, char const *argv[]) {
 
     int numThreads = 4;
-    int nIterations = 10;
-    string filename = "../../../../Files/artusi_32mb.txt";
+    int nIterations = 5;
 
-    // Compute bigrams
-    execute(2, nIterations, numThreads, filename);
+    vector<string> sizes = {"50kb", "100kb", "200kb", "500kb", "1mb", "2mb", "4mb", "8mb", "16mb", "32mb"};
+    for (auto &size: sizes) {
+        string filename = "../../../../Files/artusi_" + size + ".txt";
 
-    std::this_thread::sleep_for(std::chrono::seconds(2));
+        // Compute bigrams
+        execute(2, nIterations, numThreads, filename);
 
-    // Compute trigrams
-    execute(3, nIterations, numThreads, filename);
+        // Compute trigrams
+        execute(3, nIterations, numThreads, filename);
+    }
 
 }
