@@ -260,7 +260,7 @@ for (auto &line: lines) {
 
 Per il conteggio dei bigrammi o trigrammi è stato utilizzata una variabile \textit{globalCounter} di tipo \textit{atomic\_int}, condivisa tra tutti i thread, in modo che ogni thread possa aggiornarla evitando inconsistenze.
 
-La classe \textit{thread} della libreria standard del C++ (\textit{std::thread}), introdotta con C++11, richiede nel costruttore un oggetto \textit{callable} (riferimento a funzione o laMBda expression), porzione di codice che viene eseguita non appena il thread viene lanciato.
+La classe \textit{thread} della libreria standard del C++ (\textit{std::thread}), introdotta con C++11, richiede nel costruttore un oggetto \textit{callable} (riferimento a funzione o lambda expression), porzione di codice che viene eseguita non appena il thread viene lanciato.
 È stata quindi creata una funzione \textit{run()} per il calcolo degli \textit{n-grammi} che riceve in ingresso:
 \begin{itemize}
 	\item \textit{globalCounter}: riferimento alla variabile di tipo \textit{atomic\_int}, rappresenta il contatore globale del numero di \textit{n-grammi} trovati
